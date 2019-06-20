@@ -10,7 +10,6 @@ import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss';
 
-import A from './A';
 import Wrapper from './Wrapper';
 
 function Button(props) {
