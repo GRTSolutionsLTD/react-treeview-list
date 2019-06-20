@@ -17,11 +17,7 @@ function Button(props) {
   // Render an anchor tag
   let button = (
     <div>
-      <div className="efrat">{Children.toArray(props.children)} efrat
-        <div className="efrat2">
-          {Children.toArray(props.children)} efrat 2
-        </div>
-      </div>
+      <div className="danger">{Children.toArray(props.children)}</div>
     </div>
   );
 

@@ -1,15 +1,7 @@
 $error-color: blue;
-$efrat-color: grey;
 
 .danger {
   background-color: $error-color;
-}
-
-.efrat {
-  background-color: $efrat-color;
-  .efrat2 {
-    background-color: lighten($efrat-color, 10%);
-  }
 }
 
 .button {
