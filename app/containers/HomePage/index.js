@@ -20,11 +20,14 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
+import Button from 'components/Button';
+
 import ReposList from 'components/ReposList';
 import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
 import Input from './Input';
+
 import Section from './Section';
 import messages from './messages';
 import { loadRepos } from '../App/actions';
@@ -92,10 +95,12 @@ export function HomePage({
                 value={username}
                 onChange={onChangeUsername}
               />
+              <Button>rrer</Button>
             </label>
           </Form>
           <ReposList {...reposListProps} />
         </Section>
+        <div> rivki test</div>
       </div>
     </article>
   );
