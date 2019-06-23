@@ -15,11 +15,16 @@ import FoldersPage from 'containers/FoldersPage/Loadable';
 import SummaryPage from 'containers/SummaryPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
+import Header from 'components/Header/Loadable';
+
 import GlobalStyle from '../../global-styles';
+
+import './app.scss';
 
 export default function App() {
   return (
-    <div>
+    <div className="appWrapper">
+      <Header />
       <Switch>
         {/* <Route exact path="/" component={HomePage} /> */}
         <Route exact path="/" component={FoldersPage} />
