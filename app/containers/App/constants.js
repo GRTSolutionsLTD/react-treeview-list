@@ -8,3 +8,7 @@
  * Follow this format:
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
+
+export const LOAD_FOLDERS = 'App/LOAD_FOLDERS';
+export const LOAD_FOLDERS_SUCCESS = 'App/LOAD_FOLDERS_SUCCESS';
+export const LOAD_FOLDERS_ERROR = 'App/LOAD_FOLDERS_ERROR';
