@@ -3,7 +3,7 @@ import { LOAD_FOLDERS } from 'containers/App/constants';
 import { foldersLoaded, foldersLoadingError } from 'containers/App/actions';
 import * as data from '../../data/folders.json';
 
-export function* loadFolders(props) {
+export function* loadFolders() {
   // const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
 
   try {
@@ -12,7 +12,7 @@ export function* loadFolders(props) {
     //   console.log(text)
     console.log(data);
     // };
-    yield put(foldersLoaded(props.default));
+    yield put(foldersLoaded(data.default));
     // Call our request helper (see 'utils/request')
   } catch (err) {
     yield put(foldersLoadingError(err));
