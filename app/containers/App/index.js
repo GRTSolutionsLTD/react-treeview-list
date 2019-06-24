@@ -15,6 +15,7 @@ import FoldersPage from 'containers/FoldersPage/Loadable';
 import SummaryPage from 'containers/SummaryPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
+// eslint-disable-next-line import/no-unresolved
 import Header from 'components/Header/Loadable';
 
 import GlobalStyle from '../../global-styles';

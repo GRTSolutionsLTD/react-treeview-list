@@ -12,8 +12,7 @@ import {
   LOAD_FOLDERS_SUCCESS,
   LOAD_FOLDERS,
   LOAD_FOLDERS_ERROR,
-} from './constants';
-
+} from '../../containers/App/constants';
 // The initial state of the App
 export const initialState = {
   loading: false,

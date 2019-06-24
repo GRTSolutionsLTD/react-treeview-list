@@ -93,7 +93,6 @@ module.exports = require('./webpack.base.babel')({
 
       // No need to cache .htaccess. See http://mxs.is/googmp,
       // this is applied before any match in `caches` section
-      excludes: ['.htaccess'],
 
       caches: {
         main: [':rest:'],
