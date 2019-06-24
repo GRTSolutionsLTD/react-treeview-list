@@ -1,6 +1,6 @@
 import { makeSelectFolders } from '../../containers/App/selectors';
 
-export const getChildren = path => {
+const getChildren = path => {
   let OurData = makeSelectFolders();
   const partPath = path.split('/');
   let i;
@@ -11,7 +11,9 @@ export const getChildren = path => {
         OurData = OurData[j].children;
         break;
       }
+  return OurData;
 };
+export default getChildren;
 //   for (let itemPath in partPath)
 //     for (let itemData in OurData)
 //  if (OurData[itemData].name == partPath[itemPath])
