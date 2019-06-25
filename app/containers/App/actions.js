@@ -28,7 +28,6 @@ export function foldersLoaded(folders) {
     folders,
   };
 }
-
 /**
  * Dispatched when loading the repositories fails
  *
