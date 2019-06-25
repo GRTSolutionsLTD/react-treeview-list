@@ -6,13 +6,12 @@
  * add it to the switch statement in the reducer function
  *
  */
-
 import produce from 'immer';
 import {
   LOAD_FOLDERS_SUCCESS,
   LOAD_FOLDERS,
   LOAD_FOLDERS_ERROR,
-} from '../../containers/App/constants';
+} from './constants';
 // The initial state of the App
 export const initialState = {
   loading: false,

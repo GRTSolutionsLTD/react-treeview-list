@@ -5,15 +5,11 @@ import * as data from '../../data/folders.json';
 // eslint-disable-next-line func-names
 export default function getChildren(path) {
   // let OurData = select(makeSelectFolders());
-  let OurData = data.default;
   const partPath = path.split('/');
   let i;
   let j;
-  // let OurData = data.default;
-  // console.log(OurData);
-  // return { ...makeSelectFolders() };
+  let OurData = data.default;
   if (path === '') return OurData;
-  // להוסיף את ההתחלה
   for (i = 0; i < partPath.length; i += 1)
     for (j = 0; j < OurData.length; j += 1)
       if (OurData[j].name === partPath[i]) {

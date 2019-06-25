@@ -13,8 +13,8 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from '../../containers/App/selectors';
-import reducer from './reducer';
-import saga from './saga';
+import reducer from '../../containers/App/reducer';
+import saga from '../../containers/App/saga';
 import { loadFolders } from '../../containers/App/actions';
 import './Folder.css';
 const key = 'folder';
@@ -37,7 +37,6 @@ function Folder({ path, name, onLoadFolders }) {
   const onOpen = event => {
     if (event.target.checked) {
       setChildren(getChildren(path));
-      setChildren(getChildren(path).next());
       console.log(children);
     } else {
       setChildren([]);
