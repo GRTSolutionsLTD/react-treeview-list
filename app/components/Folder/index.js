@@ -1,9 +1,5 @@
-/**
- *
- * Folder
- *
- */
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+// import { React } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { Helmet } from 'react-helmet';
@@ -20,6 +16,7 @@ import {
 import reducer from './reducer';
 import saga from './saga';
 import { loadFolders } from '../../containers/App/actions';
+import './Folder.css';
 const key = 'folder';
 // const foldersListProps = {
 //     loading,
@@ -30,44 +27,43 @@ const key = 'folder';
 
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-
-function Folder(props, loading, error, folders, onLoadFolders) {
+function Folder({ path, name, onLoadFolders }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
   useEffect(() => {
     // if (currentPath && currentPath.trim().length > 0)
-    // eslint-disable-next-line react/prop-types
-    onLoadFolders(props.path);
+    if (path === '') onLoadFolders(path);
   }, []);
-  const onOpen = () => {
-    if (isOpen) setIsOpen(false);
-    else setIsOpen(true);
+  const onOpen = event => {
+    if (event.target.checked) {
+      setChildren(getChildren(path));
+      setChildren(getChildren(path).next());
+      console.log(children);
+    } else {
+      setChildren([]);
+    }
   };
-  const [isOpen, setIsOpen] = useState(false);
   const [children, setChildren] = useState([]);
-  const f = () => {
-    // eslint-disable-next-line react/prop-types
-    setChildren(getChildren(props.path));
-    return children.map(p =>
+  const renderChildren = () =>
+    children.map(p =>
       p.type === 'folder' ? <Folder path={p.path} name={p.name} /> : '',
     );
-  };
-  const f2 = () =>
+
+  const renderFiles = () =>
     children.map(p => (p.type === 'file' ? <div> file</div> : ''));
+
   return (
-    <>
-      <div>im a folder</div>
+    <div>
+      <div>im {name} folder</div>
       <input type="checkbox" onClick={onOpen} />
-      {isOpen ? f() : ''}
-      {isOpen ? f2() : ''}
-    </>
+      {renderChildren()}
+      {renderFiles()}
+    </div>
   );
 }
 Folder.propTypes = {
-  props: {
-    path: PropTypes.string,
-    name: PropTypes.string,
-  },
+  path: PropTypes.string,
+  name: PropTypes.string,
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([
     PropTypes.object,
@@ -83,10 +79,11 @@ const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
-
+console.log(1);
+console.log(mapStateToProps.folders);
 export function mapDispatchToProps(dispatch) {
   return {
-    onLoadFolders: path => dispatch(loadFolders(path)),
+    onLoadFolders: () => dispatch(loadFolders()),
   };
 }
 const withConnect = connect(

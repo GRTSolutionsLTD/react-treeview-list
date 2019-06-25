@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { initialState } from '../../components/Folder/reducer';
 
 /**
  * Direct selector to the foldersPage state domain

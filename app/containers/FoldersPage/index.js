@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import Folder from '../../components/Folder';
+import Folder from '../../components/Folder/index';
 import './folders.scss';
 export function FoldersPage() {
   // if (currentPath && currentPath.trim().length > 0)
@@ -36,7 +36,7 @@ export function FoldersPage() {
 //   onLoadFolders: PropTypes.func,
 // };
 
-const mapStateToProps = createStructuredSelector();
+const mapStateToProps = createStructuredSelector({});
 export function mapDispatchToProps() {
   return {};
 }

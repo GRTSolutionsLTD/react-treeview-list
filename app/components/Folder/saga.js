@@ -8,8 +8,7 @@ export function* loadFolders() {
 
   try {
     // reader.onload = async (e) => {
-    //   const text = (e.target.result)
-    //   console.log(text)
+    //   const text = (e.target.result
     console.log(data);
     // };
     yield put(foldersLoaded(data.default));

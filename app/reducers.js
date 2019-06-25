@@ -4,11 +4,9 @@
 
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import globalReducer from 'containers/App/reducer';
-
 import history from 'utils/history';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
-
+import globalReducer from './components/Folder/reducer';
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */

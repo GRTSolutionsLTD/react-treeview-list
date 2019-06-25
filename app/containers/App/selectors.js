@@ -3,7 +3,7 @@
  */
 
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { initialState } from '../../components/Folder/reducer';
 
 const selectGlobal = state => state.global || initialState;
 
