@@ -1,90 +1,85 @@
-import React, { useState, useEffect } from 'react';
-// import { React } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { Helmet } from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import getChildren from './getChildren';
-import {
-  makeSelectFolders,
-  makeSelectLoading,
-  makeSelectError,
-} from '../../containers/App/selectors';
-import reducer from '../../containers/App/reducer';
-import saga from '../../containers/App/saga';
-import { loadFolders } from '../../containers/App/actions';
-import './Folder.css';
-const key = 'folder';
-// const foldersListProps = {
-//     loading,
-//     error,
-//     folders,
-//     onLoadFolders,
-//   };
 
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-function Folder({ path, name, onLoadFolders }) {
+import reducer from '../../containers/App/reducer';
+import { loadChildren } from '../../containers/App/actions';
+
+import saga from './saga';
+import './Folder.css';
+
+// import ExcelFile from '../FileTypes/ExcelFile';
+// import JpgFile from '../FileTypes/JpgFile';
+// import WordFile from '../FileTypes/WordFile';
+
+const key = 'folder';
+
+const Folder = ({ path, name, childrenList, onLoadChildren }) => {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
   useEffect(() => {
-    // if (currentPath && currentPath.trim().length > 0)
-    if (path === '') onLoadFolders(path);
+    if (path === '') onLoadChildren(path);
   }, []);
+
   const onOpen = event => {
     if (event.target.checked) {
-      setChildren(getChildren(path));
-      console.log(children);
-    } else {
-      setChildren([]);
+      // TODO: to empty by open/close boolean feature
+      onLoadChildren(path);
     }
   };
-  const [children, setChildren] = useState([]);
+
   const renderChildren = () =>
-    children.map(p =>
-      p.type === 'folder' ? <Folder path={p.path} name={p.name} /> : '',
+    childrenList.map(child =>
+      child.type === 'folder' ? (
+        <Folder
+          key={child.path}
+          path={child.path}
+          name={child.name}
+          childrenList={child.children}
+          onLoadChildren={onLoadChildren}
+        />
+      ) : (
+        <div>file {child.name}</div>
+      ),
     );
 
-  const renderFiles = () =>
-    children.map(p => (p.type === 'file' ? <div> file</div> : ''));
+  // const returnFile = fileType => {
+  //   switch (fileType) {
+  //     case 'jpg':
+  //       return <JpgFile key={1} name={fileType} />;
+  //     case 'excel':
+  //       return <ExcelFile key={1} name={fileType} />;
+  //     case 'word':
+  //       return <WordFile key={1} name={fileType} />;
+  //     default:
+  //       return <div />;
+  //   }
+  // };
 
   return (
     <div>
-      <div>im {name} folder</div>
-      <input type="checkbox" onClick={onOpen} />
+      <div>{name}</div>
+      <input type="checkbox" onClick={onOpen} className="checkbox-sm" />
       {renderChildren()}
-      {renderFiles()}
     </div>
   );
 }
 Folder.propTypes = {
   path: PropTypes.string,
   name: PropTypes.string,
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
-  folders: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  onLoadFolders: PropTypes.func,
+  childrenList: PropTypes.array,
+  onLoadChildren: PropTypes.func,
 };
 
-const mapStateToProps = createStructuredSelector({
-  folders: makeSelectFolders(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
+const mapStateToProps = createStructuredSelector({});
+const mapDispatchToProps = (dispatch) => ({
+  onLoadChildren: path => dispatch(loadChildren(path)),
 });
-console.log(1);
-console.log(mapStateToProps.folders);
-export function mapDispatchToProps(dispatch) {
-  return {
-    onLoadFolders: () => dispatch(loadFolders()),
-  };
-}
 const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps,
