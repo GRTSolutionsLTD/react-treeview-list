@@ -1,5 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+// import 'bootstrap';
+// import 'bootstrap/js/dist/util';
+// import 'bootstrap/js/dist/dropdown';
+// import 'bootstrap/dist/css/bootstrap.css';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import FoldersPage from 'containers/FoldersPage/Loadable';
 import SummaryPage from 'containers/SummaryPage/Loadable';
@@ -20,6 +25,8 @@ export default function App() {
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
+      <input id="checkbox2" className="styled" type="checkbox" />
+      <input type="checkbox" className="checkbox-sm" />    
     </div>
   );
 }

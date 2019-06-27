@@ -20,13 +20,13 @@ const getChildrenByPath = path => {
 
     pathList.forEach(pathName => {
       if (pathName !== '')
-        folders = folders.find(folder => folder.name === pathName);
+        folders = folders.find(folder => folder.name === pathName).children;
     });
-    folders = folders.children;
   }
   folders = folders.map(folder => {
     const currentFolder = Object.assign({}, folder);
-    currentFolder.children = [];
+    if(currentFolder.type==='folder')
+      currentFolder.children = [];
     return currentFolder;
   });
   return folders;

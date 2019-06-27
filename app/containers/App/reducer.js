@@ -22,7 +22,7 @@ const appReducer = (state = initialState, action) =>
       case LOAD_CHILDREN_SUCCESS:
         const folder = getFolderByChildPath(state.rootFolders, action.path);
         folder.children = action.children;
-        draft.folders = Object.assign({}, state.rootFolders);
+        draft.rootFolders = {...state.rootFolders};
         draft.loading = false;
         break;
 
