@@ -6,13 +6,18 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import './homePage.scss';
+// import { FormattedMessage } from 'react-intl';
+// import messages from './messages';
 
 export default function HomePage() {
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <div className="wrapHomePage">
+      <h1 className="welcome">welcome to grth</h1>
+      <h3 className="first">Our first project</h3>
+      <button type="button" className="btn btn-primary">
+        Hello
+      </button>
+    </div>
   );
 }

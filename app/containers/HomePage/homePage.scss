@@ -1,0 +1,20 @@
+
+$base-color: #4f9febf3;
+
+.welcome{
+ color:$base-color;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: -webkit-xxx-large;
+}
+.first{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba($base-color, 0.70);
+    font-size: xx-large;
+}
+.wrapHomePage{
+    text-shadow: -1px 0 black, 0 1px gray, 1px 0 lightblue, 0 -1px blue;
+}

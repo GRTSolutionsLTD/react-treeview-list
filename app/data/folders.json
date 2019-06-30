@@ -23,6 +23,21 @@
                 "type": "file",
                 "name": "cat001.jpg",
                 "path": "/animals/cat/images/cat002.jpg"
+              },
+              {
+                "type": "file",
+                "name": "cat001.jpg",
+                "path": "/animals/cat/images/cat003.excell"
+              },
+              {
+                "type": "file",
+                "name": "cat001.jpg",
+                "path": "/animals/cat/images/cat004.word"
+              },
+              {
+                "type": "file",
+                "name": "cat001.jpg",
+                "path": "/animals/cat/images/cat005.word"
               }
             ]
           }

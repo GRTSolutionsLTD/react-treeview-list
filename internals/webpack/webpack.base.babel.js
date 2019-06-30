@@ -56,7 +56,7 @@ module.exports = options => ({
         ],
       },
       {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(JPG|jpg|png|gif)$/,
         use: [
           {
             loader: 'url-loader',
@@ -114,7 +114,7 @@ module.exports = options => ({
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
-    extensions: ['.js', '.jsx', '.react.js'],
+    extensions: ['.js', '.jsx', '.react.js', '.JPG', '.jpg'],
     mainFields: ['browser', 'jsnext:main', 'main'],
   },
   devtool: options.devtool,
