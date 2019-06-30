@@ -22,7 +22,7 @@ const makeSelectError = () =>
 const makeSelectFolders = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.folders,
+    globalState => globalState.rootFolders,
   );
 
 export { selectGlobal, makeSelectLoading, makeSelectError, makeSelectFolders };

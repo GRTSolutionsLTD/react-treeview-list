@@ -1,43 +1,41 @@
-import {
-  LOAD_FOLDERS,
-  LOAD_FOLDERS_SUCCESS,
-  LOAD_FOLDERS_ERROR,
-} from './constants';
+import { LOAD_CHILDREN, LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN_ERROR } from './constants';
 
 /**
- * Load the repositories, this action starts the request saga
+ * Load the children of specific path, this action starts the request saga
  *
- * @return {object} An action object with a type of LOAD_FOLDERS
+ * @return {object} An action object with a type of LOAD_CHILDREN
  */
-export function loadFolders() {
+export function loadChildren(path) {
   return {
-    type: LOAD_FOLDERS,
+    type: LOAD_CHILDREN,
+    path,
   };
 }
 
 /**
- * Dispatched when the repositories are loaded by the request saga
+ * Dispatched when the children are loaded by the request saga
  *
- * @param  {array} folders The repository data
+ * @param  {array} children The children of specific path
  *
- * @return {Array}       array with a type of LOAD_FOLDERS_SUCCESS passing the repos
+ * @return {Array}       array with a type of LOAD_CHILDREN_SUCCESS passing the repos
  */
-export function foldersLoaded(folders) {
+export function childrenLoaded(path, children) {
   return {
-    type: LOAD_FOLDERS_SUCCESS,
-    folders,
+    type: LOAD_CHILDREN_SUCCESS,
+    path,
+    children,
   };
 }
 /**
- * Dispatched when loading the repositories fails
+ * Dispatched when loading the children fails
  *
  * @param  {object} error The error
  *
- * @return {object}       An action object with a type of LOAD_FOLDERS_ERROR passing the error
+ * @return {object}       An action object with a type of LOAD_CHILDREN_ERROR passing the error
  */
-export function foldersLoadingError(error) {
+export function childrenLoadingError(error) {
   return {
-    type: LOAD_FOLDERS_ERROR,
+    type: LOAD_CHILDREN_ERROR,
     error,
   };
 }

@@ -1,44 +1,52 @@
-/*
- * AppReducer
- *
- * The reducer takes care of our data. Using actions, we can
- * update our application state. To add a new action,
- * add it to the switch statement in the reducer function
- *
- */
 import produce from 'immer';
-import {
-  LOAD_FOLDERS_SUCCESS,
-  LOAD_FOLDERS,
-  LOAD_FOLDERS_ERROR,
-} from './constants';
-// The initial state of the App
+import { LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN, LOAD_CHILDREN_ERROR } from './constants';
+
 export const initialState = {
   loading: false,
   error: false,
-  currentPath: '',
-  folders: [],
+  rootFolders: {
+    path: '',
+    name: '',
+    children: []
+  },
 };
 
-/* eslint-disable default-case, no-param-reassign */
 const appReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case LOAD_FOLDERS:
+      case LOAD_CHILDREN:
         draft.loading = true;
         draft.error = false;
-        draft.folders = [];
         break;
 
-      case LOAD_FOLDERS_SUCCESS:
-        draft.folders = action.folders;
+      case LOAD_CHILDREN_SUCCESS:
+        const folder = getFolderByChildPath(state.rootFolders, action.path);
+        folder.children = action.children;
+        draft.rootFolders = {...state.rootFolders};
         draft.loading = false;
         break;
-      case LOAD_FOLDERS_ERROR:
+
+      case LOAD_CHILDREN_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
+      default:
+
     }
   });
+
+const getFolderByChildPath = (rootFolders, childPath) => {
+  const pathList = childPath.split('/');
+  let folder = rootFolders;
+  if (folder.name === childPath) return folder;
+
+  pathList.forEach(pathName => {
+    if (pathName !== '') {
+      folder = folder.children.find(currentFolder => currentFolder.name === pathName);
+    }
+  });
+
+  return folder;
+};
 
 export default appReducer;

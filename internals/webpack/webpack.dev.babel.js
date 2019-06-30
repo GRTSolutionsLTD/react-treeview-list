@@ -49,4 +49,12 @@ module.exports = require('./webpack.base.babel')({
   performance: {
     hints: false,
   },
+  module:{
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
 });
