@@ -19,6 +19,8 @@ export function FoldersPage({folders, onLoadChildren}) {
         <li className="list-group-item">shop</li>
         
       </ul> */}
+      {/* <ul><li  className="list-group-item"><ul  className="list-group-item-active"><li  className="list-group-item">fgfd</li>
+        <li  className="list-group-item">gfdg</li></ul></li><li>fgfd</li></ul> */}
       <Folder key={0} onLoadChildren={onLoadChildren} path={folders.path} name={folders.name} childrenList={folders.children} />
     </div>
   );
