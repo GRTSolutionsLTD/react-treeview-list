@@ -49,5 +49,36 @@
         ]
       }
     ]
+  },
+  {
+    "type": "folder",
+    "name": "animals1",
+    "path": "/animals1",
+    "children": [
+      {
+        "type": "folder",
+        "name": "cat",
+        "path": "/animals1/cat",
+        "children": [
+          {
+            "type": "folder",
+            "name": "images",
+            "path": "/animals1/cat/images",
+            "children": [
+              {
+                "type": "file",
+                "name": "cat001.jpg",
+                "path": "/animals1/cat/images/cat001.jpg"
+              },
+              {
+                "type": "file",
+                "name": "cat001.excel",
+                "path": "/animals1/cat/images/cat002.jpg"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

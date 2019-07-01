@@ -1,0 +1,36 @@
+.fas{
+    color:#fedc75;
+    background-color:inherit;
+   
+    display:inline-block;
+     width:30px;
+}
+.mb-3{
+    display:inline;
+}
+l.custom-control-label{display:inline-block;
+    width:100px;
+    height:30px;
+    color:white;
+font-family:   Arial, sans-serif;
+}
+.li_folders{
+    list-style-type:none;
+}
+.folder_wrapper{
+    width: fit-content; 
+    background-color:#505866;
+    border:ridge 5px #33373d;
+    border-radius: 1px;
+}
+.folder_button{
+    background-color:inherit;
+    border:none;
+
+}
+.folder_button:focus{
+    outline-color:#505866;
+}
+.folder_button:hover{
+    border:none;
+}

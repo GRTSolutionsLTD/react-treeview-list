@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useEffect,useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // import { useInjectReducer } from 'utils/injectReducer';
@@ -10,52 +10,33 @@ import { useInjectSaga } from 'utils/injectSaga';
 import saga from './saga';
 import './Folder.css';
 import File from '../File';
+// eslint-disable-next-line import/no-cycle
+import Li from '../Li';
 const key = 'folder';
 
-const Folder = ({ path, name, childrenList, onLoadChildren}) => {
+const Folder = ({ path, childrenList, onLoadChildren}) => {
   // useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
   useEffect(() => {
     if (path === '') onLoadChildren(path);
   }, []);
-const [isOpen,setIsOpen]=useState(false);
-  const onOpen = event => {
-    if (event.target.checked) {
-      // TODO: to empty by open/close boolean feature
-      onLoadChildren(path);
-      setIsOpen(true);
-    }
-    else
-    {
-      setIsOpen(false);
-    }
-  };
+
   
+
   const renderChildren = () =>
     childrenList.map(child =>
       child.type === 'folder' ? (
-        <li className={isOpen?"list-group-item-active":"list-group-item"}>
-        <Folder 
-          key={child.path}
-          path={child.path}
-          name={child.name}
-          childrenList={child.children}
-          onLoadChildren={onLoadChildren}
-        /></li>
+       <Li name={child.name} path={child.path} childrenList={child.children} onLoadChildren={onLoadChildren}/>
       ) : (
-         <li> <File fileType={child.path.slice(child.path.lastIndexOf('.') + 1)} /></li>
+         <li key={child.path} className="list-group-item"> <File fileType={child.path.slice(child.path.lastIndexOf('.') + 1)} /></li>
         ),
     );
   return (
-    <div>
-      {path !== '' && <input type="checkbox" value="" onClick={onOpen}/>} {name}
+    <>
       <ul>
       {renderChildren()}
 </ul>
-      <div className="checkbox disabled">
-
-      </div>
-    </div>
+    </>
   );
 }
 

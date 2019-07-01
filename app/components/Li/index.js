@@ -4,16 +4,25 @@
  *
  */
 
-import {React,useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import propTypes from 'prop-types';
+// eslint-disable-next-line import/no-cycle
 import Folder from '../Folder';
+import './Li.scss';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
 function Li({onLoadChildren,path,name,childrenList}) {
   const [isOpen,setIsOpen]=useState(false);
+  const [children,setChildren]=useState(childrenList);
+
+  useEffect(()=>{if(isOpen)
+    setChildren(childrenList);
+  else
+    setChildren([]);
+  },[isOpen]);
   const onOpen = (event,childPath)=> {
-    if (event.target.checked) {
+    if (!isOpen) {
       // TODO: to empty by open/close boolean feature
       onLoadChildren(childPath);
       setIsOpen(true);
@@ -23,16 +32,23 @@ function Li({onLoadChildren,path,name,childrenList}) {
       setIsOpen(false);
     }
   };
-  return  <li className={isOpen?"list-group-item":"list-group-item-active"}>
-    {isOpen?<i className='fas fa-folder-open'></i>:<i className='fas fa-folder'></i>} 
-    <input type="checkbox" value="" onClick={(e)=>{onOpen(e,path)}}/>{name}
+  return (<>
+    
+    <li className="li_folders"><div className="folder_wrapper">
+      <div className="custom-control custom-checkbox mb-3">
+        <input type="checkbox" className="custom-control-input"  id={path} name="example1" />
+        <label className="custom-control-label" htmlFor={path}><button className="folder_button" type="button" onClick={(e)=>{onOpen(e,path)}}>{name}</button></label>
+      </div>
+      {isOpen?<i className='fas fa-folder-open'></i>:<i className='fas fa-folder'></i>} 
+    </div>
+    {/* <input type="checkbox" value="" onClick={(e)=>{onOpen(e,path)}}/> */}
     <Folder  
       key={path}
       path={path}
       name={name}
-      childrenList={childrenList}
+      childrenList={children}
       onLoadChildren={onLoadChildren}
-    /></li> ;
+    /></li></>);
 }
 
 Li.propTypes = {
