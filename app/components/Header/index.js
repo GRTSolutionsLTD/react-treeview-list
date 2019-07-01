@@ -17,7 +17,7 @@ function Header() {
     <div>
       <img src={GRTH} alt="imageGRTH" />
       <div className="nav-bar">
-        <Link className="link" to="/">
+        <Link className="link" to="/homePage">
           home page
         </Link>
         {'|'}

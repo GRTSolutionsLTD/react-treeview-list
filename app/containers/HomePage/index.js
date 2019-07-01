@@ -15,9 +15,6 @@ export default function HomePage() {
     <div className="wrapHomePage">
       <h1 className="welcome">welcome to grth</h1>
       <h3 className="first">Our first project</h3>
-      <button type="button" className="btn btn-primary">
-        Hello
-      </button>
     </div>
   );
 }

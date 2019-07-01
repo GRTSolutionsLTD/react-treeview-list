@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import FoldersPage from 'containers/FoldersPage/Loadable';
 import SummaryPage from 'containers/SummaryPage/Loadable';
+import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header/Loadable';
 import Footer from '../../components/Footer/index';
@@ -22,13 +23,13 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/folders" component={FoldersPage} />
+        <Route exact path="/homePage" component={HomePage} />
+
         <Route exact path="/summary" component={SummaryPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />
-      <GlobalStyle />
-      <input id="checkbox2" className="styled" type="checkbox" />
-      <input type="checkbox" className="checkbox-sm" />    
+      <GlobalStyle />  
     </div>
   );
 }

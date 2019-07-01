@@ -37,7 +37,12 @@
               {
                 "type": "file",
                 "name": "cat001.jpg",
-                "path": "/animals/cat/images/cat005.word"
+                "path": "/animals/cat/images/cat005.json"
+              },
+              {
+                "type": "file",
+                "name": "cat001.jpg",
+                "path": "/animals/cat/images/cat004.json"
               }
             ]
           }
