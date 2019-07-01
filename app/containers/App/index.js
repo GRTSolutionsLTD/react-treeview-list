@@ -11,6 +11,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header/Loadable';
 import Footer from '../../components/Footer/index';
 import GlobalStyle from '../../global-styles';
+import HomePage from '../HomePage';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
 
@@ -19,7 +20,8 @@ export default function App() {
     <div className="appWrapper">
       <Header />
       <Switch>
-        <Route exact path="/" component={FoldersPage} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/folders" component={FoldersPage} />
         <Route exact path="/summary" component={SummaryPage} />
         <Route component={NotFoundPage} />
       </Switch>
