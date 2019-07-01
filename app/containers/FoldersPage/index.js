@@ -24,13 +24,6 @@ export function FoldersPage({folders, onLoadChildren}) {
   );
 }
 
-// FoldersPage.propTypes = {
-//   folders: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-// };
-
-// const mapStateToProps = createStructuredSelector({
-//   folders: makeSelectFolders()
-// });
 FoldersPage.propTypes = {
   folders: PropTypes.object,
   onLoadChildren: PropTypes.func,

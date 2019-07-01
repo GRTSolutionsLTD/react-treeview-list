@@ -30,28 +30,10 @@ export function SummaryPage() {
 
   useEffect(() => {
     GetSummary(data.default);
+    setTypes(list);
   }, []);
 
-  const setStateFunc = currentType => {
-    setTypes(
-      types.map(item => {
-        if (item.type === currentType) {
-          return { ...item, amount: item.amount + 1 };
-        }
-        return item;
-      }),
-    );
-    // for (let i = 0; i < types.length; i += 1)
-    //   if (types[i].type === currentType) {
-    //     let x = types[i];
-    //     x = { ...x, amount: x.amount + 1 };
-    //     types[i] = x;
-    //     setTypes(...types);
-    //     console.log(types);
-    //   }
-    // console.log(currentType);
-  };
-
+  const list = [...types];
   const GetSummary = dataList => {
     for (let i = 0; i < dataList.length; i += 1) {
       if (dataList[i].type === 'folder') GetSummary(dataList[i].children);
@@ -59,7 +41,17 @@ export function SummaryPage() {
         const currentType = dataList[i].path.slice(
           dataList[i].path.lastIndexOf('.') + 1,
         );
-        setStateFunc(currentType);
+        for (let j = 0; j < list.length; j += 1){
+          if (list[j].type === currentType)
+          {list[j].amount+=1;
+            break;
+          }
+          if(j===list.length-1){
+            const newInstance = {type: currentType, amount: 1};
+            list.push(newInstance);
+            break;
+          }
+        }
       }
     }
   };
@@ -75,28 +67,12 @@ export function SummaryPage() {
     },
   ];
 
-  // const dataList = [
-  //   {
-  //     type: 'jpg',
-  //     amount: types.jpg,
-  //   },
-  //   {
-  //     type: 'word',
-  //     amount: types.word,
-  //   },
-  //   {
-  //     type: 'excell',
-  //     amount: types.excell,
-  //   },
-  // ];
-
   return (
     <div>
       <Helmet>
         <title>Summary Page</title>
         <meta name="description" content="Description of SummaryPage" />
       </Helmet>
-      <div>l;hp;uoy</div>
       <div className="summary"> this is summary page</div>
       <ReactTable data={types} columns={columns} />
     </div>
