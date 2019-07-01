@@ -16,8 +16,8 @@ function Footer() {
   return (
     <div>
       <p className="copyRights">
-        <i className="far fa-copyright"></i>
-        all rights reserved
+        <i className="far fa-copyright"> all rights reserved</i>
+        
       </p>
     </div>
   );
