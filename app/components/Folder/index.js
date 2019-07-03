@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { useInjectSaga } from 'utils/injectSaga';
 
 // import reducer from '../../containers/App/reducer';
-
 import saga from './saga';
 import './Folder.css';
 import File from '../File';
@@ -14,7 +13,7 @@ import File from '../File';
 import Li from '../Li';
 const key = 'folder';
 
-const Folder = ({ path, childrenList, onLoadChildren}) => {
+const Folder = ({ path, childrenList, onLoadChildren,createFolder}) => {
   // useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
   useEffect(() => {
@@ -26,7 +25,7 @@ const Folder = ({ path, childrenList, onLoadChildren}) => {
   const renderChildren = () =>
     childrenList.map(child =>
       child.type === 'folder' ? (
-       <Li name={child.name} path={child.path} childrenList={child.children} onLoadChildren={onLoadChildren}/>
+       <Li createFolder={createFolder} name={child.name} path={child.path} childrenList={child.children} onLoadChildren={onLoadChildren}/>
       ) : (
          <li key={child.path} className="list-group-item"> <File fileType={child.path.slice(child.path.lastIndexOf('.') + 1)} /></li>
         ),
@@ -46,5 +45,6 @@ Folder.propTypes = {
   name: PropTypes.string,
   childrenList: PropTypes.array,
   onLoadChildren: PropTypes.func,
+  createFolder:PropTypes.func,
 };
 export default Folder;

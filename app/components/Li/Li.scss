@@ -1,36 +1,83 @@
-.fas{
-    color:#fedc75;
-    background-color:inherit;
+// .fas{
+//     color:#fedc75;
+//     background-color:inherit;
    
-    display:inline-block;
-     width:30px;
+//     display:inline-block;
+//      width:30px;
+// }
+// .custom-control{
+//     display:inline-block;
+//     width:100px;
+//     height:30px;
+//     color:white;
+// 
+// }
+// .li_folders{
+//     list-style-type:none;
+// }
+// .folder_wrapper{
+//     width: fit-content; 
+//     background-color:#505866;
+//     border:ridge 5px #33373d;
+//     border-radius: 1px;
+//   display:block;
+// }
+// .folder_button{
+//     background-color:inherit;
+//     border:none;
+
+// }
+// .folder_button:focus{
+//     outline-color:#505866;
+// }
+// .folder_button:hover{
+//     border:none;
+// }
+// #a{
+//     display:inline-block;
+// }
+.li_folders{
+        list-style-type:none;
+        position: relative;
+ }
+.folder_button:focus{
+    outline:none; }
+.folder_wrapper{
+    background-color:rgba(97,106,101,0.8);
+    height:40px;
+    width:200px;
+    border:1px black solid;
 }
 .mb-3{
-    display:inline;
+    position: relative;
+    // left:8px;
+    // top:10px;
+    
 }
-l.custom-control-label{display:inline-block;
-    width:100px;
-    height:30px;
-    color:white;
-font-family:   Arial, sans-serif;
-}
-.li_folders{
-    list-style-type:none;
-}
-.folder_wrapper{
-    width: fit-content; 
-    background-color:#505866;
-    border:ridge 5px #33373d;
-    border-radius: 1px;
+.folder_button{font-family:   Arial, sans-serif;
+   background-color:inherit;
+    border:none;}
+
+.folder-icon{
+    color:#fedc75;
+    background-color:transparent;
+       position: relative;
+    //    left:10%;
+       display: inline-block;
+      font-size: 20px;
+      left:10px;
+      top:10px;
 }
 .folder_button{
-    background-color:inherit;
-    border:none;
-
+    position: relative;
+       display: inline-block;
+      left:10px;
+      background-color:transparent;
+      top:10px; 
 }
-.folder_button:focus{
-    outline-color:#505866;
-}
-.folder_button:hover{
-    border:none;
+#check-box{
+    position: relative;
+    top:25%;
+    left:25%;
+    display:inline-block; 
 }
