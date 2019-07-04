@@ -37,6 +37,7 @@ const appReducer = (state = initialState, action) =>
             folders.push({type:"folder",name:action.name,path: `/${action.name}`});
           }}
         const newState = JSON.parse(JSON.stringify(state.rootFolders));
+        // const newState = state.rootFolders;
         newState.children = JSON.parse(JSON.stringify(data.default));
         draft.rootFolders = newState;
         break;

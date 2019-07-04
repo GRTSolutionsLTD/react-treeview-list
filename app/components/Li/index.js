@@ -33,15 +33,20 @@ function Li({ onLoadChildren, path, name, childrenList, createFolder }) {
       setIsOpen(false);
     }
   };
+  
   return (<>
 
     <li className="li_folders"><div className="folder_wrapper">
       {isOpen ? <i className='fas fa-folder-open folder-icon'></i> : <i className='fas fa-folder folder-icon'></i>}
       <button className="folder_button" type="button" onClick={(e) => { onOpen(e, path) }}>{name}</button>
-      <div className="custom-control custom-checkbox mb-3" id="check-box" >
+      {/* <div className="custom-control custom-checkbox mb-3" id="check-box" >
         <label className="custom-control-label" htmlFor={path}>
         </label>
-        <input type="checkbox" className="custom-control-input" id={path} />
+        <input type="checkbox" className="custom-control-input" id={path} disable="false"/>
+      </div> */}
+      <div className="custom-control custom-checkbox mb-3" style={{position : "relative",top:"25%" , left:"25%", display:"inline-block",zIndex:"1"}}>
+        <input type="checkbox" className="custom-control-input" id={path} name={path}/>
+        <label className="custom-control-label" htmlFor={path}> </label>
       </div>
     </div><AddFolder createNewFolder={createFolder} path={path} />
     {isOpen ? <Folder
