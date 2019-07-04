@@ -43,9 +43,9 @@ const appReducer = (state = initialState, action) =>
           deleteItems(data.default,data.default, action.choosePathes);
           action.choosePathes.length=0
         }
-        // const newState = JSON.parse(JSON.stringify(state.rootFolders));
-        // newState.children = JSON.parse(JSON.stringify(data.default));
-        // draft.rootFolders = newState;
+        //  = JSON.parse(JSON.stringify(state.rootFolders));
+        const newState = JSON.parse(JSON.stringify(data.default));
+        draft.rootFolders = newState;
         break;
       default:
     }
