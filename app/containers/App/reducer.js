@@ -1,10 +1,11 @@
 import produce from 'immer';
-import { LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN, LOAD_CHILDREN_ERROR } from './constants';
+import { LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN, LOAD_CHILDREN_ERROR, DELETE_ITEMS } from './constants';// DELETE_ITEMS
+import * as data from '../../data/folders.json';
 
 export const initialState = {
   loading: false,
   error: false,
-  rootFolders: {
+  rootFolders: {  
     path: '',
     name: '',
     children: []
@@ -30,8 +31,20 @@ const appReducer = (state = initialState, action) =>
         draft.error = action.error;
         draft.loading = false;
         break;
+    
+      case DELETE_ITEMS:
+        // deleteAlert(action.choosePathes);
+        // if(action.choosePathes.length>=3)
+        // { if (window.confirm(`Are you sure want to delete ${action.choosePathes.length} items ?`)) 
+        // { deleteItems(data.default,data.default, action.choosePathes);
+        //   action.choosePathes.length=0;
+        // }}
+        // else{
+        deleteItems(data.default,data.default, action.choosePathes);
+        // action.choosePathes.length=0
+        // }
+        break;
       default:
-
     }
   });
 
@@ -47,6 +60,24 @@ const getFolderByChildPath = (rootFolders, childPath) => {
   });
 
   return folder;
+};
+
+const deleteItems = (dataList, dat, choosePathes) => {
+
+  for (let i = 0; i < dataList.length; i += 1) 
+  {
+    const curentPath = dataList[i].path;
+    if (choosePathes.includes(curentPath))
+      if(dat===data.default)
+        data.default=dataList.filter(item => item.path !== curentPath);
+      else
+      {dat.children=dataList.filter(item => item.path !== curentPath); 
+        dataList=dataList.filter(item => item.path !== curentPath);
+        i-=1;
+      }
+    else if(dataList[i].children)
+      deleteItems(dataList[i].children, dataList[i],choosePathes);
+  }
 };
 
 export default appReducer;
