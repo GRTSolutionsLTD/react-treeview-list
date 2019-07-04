@@ -5,18 +5,21 @@
  */
 import PropTypes from 'prop-types';
 import React from 'react';
+import "../../File/file.scss";
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
-function JpgFile({ name, path }) {
+function JpgFile({  name}) {// fileType,
   return (
-    <div>
+    <div>   
+      <i className="far fa-file-image files-icon jpg"></i> 
       {name}
-      {path}
+      {/* {fileType} */}
+    
     </div>
   );
 }
 
-JpgFile.propTypes = { name: PropTypes.string, path: PropTypes.string };
+JpgFile.propTypes = { fileType: PropTypes.string, name: PropTypes.string };
 
 export default JpgFile;

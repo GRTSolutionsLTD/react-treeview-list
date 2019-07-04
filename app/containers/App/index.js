@@ -12,22 +12,22 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header/Loadable';
 import Footer from '../../components/Footer/index';
 import GlobalStyle from '../../global-styles';
-import HomePage from '../HomePage';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
 
 export default function App() {
   return (
     <div className="appWrapper">
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/folders" component={FoldersPage} />
-        <Route exact path="/homePage" component={HomePage} />
-
-        <Route exact path="/summary" component={SummaryPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <Header /> 
+      <div className="component">
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/folders" component={FoldersPage} />
+          <Route exact path="/homePage" component={HomePage} />
+          <Route exact path="/summary" component={SummaryPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
       <Footer />
       <GlobalStyle />  
     </div>

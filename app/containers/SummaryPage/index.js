@@ -12,11 +12,11 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import { useInjectReducer } from 'utils/injectReducer';
-// import ReactTable from 'react-table';
+import ReactTable from 'react-table';
 import makeSelectSummaryPage from './selectors';
 import reducer from './reducer';
 import './summary.scss';
-// import 'react-table/react-table.css';
+import 'react-table/react-table.css';
 
 import * as data from '../../data/folders.json';
 
@@ -36,7 +36,7 @@ export function SummaryPage() {
   const list = [...types];
   const GetSummary = dataList => {
     for (let i = 0; i < dataList.length; i += 1) {
-      if (dataList[i].type === 'folder') GetSummary(dataList[i].children);
+      if (dataList[i].type === 'folder' && dataList[i].children) GetSummary(dataList[i].children);
       else {
         const currentType = dataList[i].path.slice(
           dataList[i].path.lastIndexOf('.') + 1,
@@ -56,16 +56,16 @@ export function SummaryPage() {
     }
   };
 
-  // const columns = [
-  //   {
-  //     Header: 'Type',
-  //     accessor: 'type',
-  //   },
-  //   {
-  //     Header: 'Amount',
-  //     accessor: 'amount',
-  //   },
-  // ];
+  const columns = [
+    {
+      Header: 'Type',
+      accessor: 'type',
+    },
+    {
+      Header: 'Amount',
+      accessor: 'amount',
+    },
+  ];
 
   return (
     <div>
@@ -73,8 +73,7 @@ export function SummaryPage() {
         <title>Summary Page</title>
         <meta name="description" content="Description of SummaryPage" />
       </Helmet>
-      <div className="summary"> this is summary page</div>
-      {/* <ReactTable data={types} columns={columns} /> */}
+      <ReactTable data={types} columns={columns} /> 
     </div>
   );
 }

@@ -27,7 +27,7 @@
               {
                 "type": "file",
                 "name": "cat001.jpg",
-                "path": "/animals/cat/images/cat003.excell"
+                "path": "/animals/cat/images/cat003.jpg"
               },
               {
                 "type": "file",
@@ -37,16 +37,21 @@
               {
                 "type": "file",
                 "name": "cat001.jpg",
-                "path": "/animals/cat/images/cat005.json"
+                "path": "/animals/cat/images/cat005.excell"
               },
               {
                 "type": "file",
                 "name": "cat001.jpg",
-                "path": "/animals/cat/images/cat004.json"
+                "path": "/animals/cat/images/cat004.excell"
               }
             ]
           }
         ]
+      },
+      {
+        "type": "folder",
+        "name": "cat0011.jpg",
+        "path": "/animals/cat/images/cat0011.excell"
       }
     ]
   },
@@ -73,7 +78,7 @@
               {
                 "type": "file",
                 "name": "cat001.excel",
-                "path": "/animals1/cat/images/cat002.jpg"
+                "path": "/animals1/cat/images/cat002.word"
               }
             ]
           }
