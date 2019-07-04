@@ -43,9 +43,13 @@ const appReducer = (state = initialState, action) =>
           deleteItems(data.default,data.default, action.choosePathes);
           action.choosePathes.length=0
         }
-        //  = JSON.parse(JSON.stringify(state.rootFolders));
-        const newState = JSON.parse(JSON.stringify(data.default));
-        draft.rootFolders = newState;
+        // const newState  = JSON.parse(JSON.stringify(state.rootFolders));
+        // newState.children = JSON.parse(JSON.stringify(data.default));
+        // draft.rootFolders = newState;
+        // const deepCloneOfNestedObject = JSON.parse(JSON.stringify(state.rootFolders));
+        // draft.rootFolders = deepCloneOfNestedObject;
+        // eslint-disable-next-line no-console
+        // console.log(deepCloneOfNestedObject);
         break;
       default:
     }
