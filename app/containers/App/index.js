@@ -12,7 +12,6 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header/Loadable';
 import Footer from '../../components/Footer/index';
 import GlobalStyle from '../../global-styles';
-import HomePage from '../HomePage';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
 
