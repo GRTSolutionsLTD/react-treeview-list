@@ -33,16 +33,16 @@ const appReducer = (state = initialState, action) =>
         break;
     
       case DELETE_ITEMS:
-        // deleteAlert(action.choosePathes);
-        // if(action.choosePathes.length>=3)
-        // { if (window.confirm(`Are you sure want to delete ${action.choosePathes.length} items ?`)) 
-        // { deleteItems(data.default,data.default, action.choosePathes);
-        //   action.choosePathes.length=0;
-        // }}
-        // else{
-        deleteItems(data.default,data.default, action.choosePathes);
-        // action.choosePathes.length=0
-        // }
+        if(action.choosePathes.length>=3)
+        // eslint-disable-next-line no-alert
+        { if (window.confirm(`Are you sure want to delete ${action.choosePathes.length} items ?`)) 
+        { deleteItems(data.default,data.default, action.choosePathes);
+          action.choosePathes.length=0;
+        }}
+        else{
+          deleteItems(data.default,data.default, action.choosePathes);
+          action.choosePathes.length=0
+        }
         break;
       default:
     }
