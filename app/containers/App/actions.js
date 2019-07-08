@@ -1,4 +1,4 @@
-import { LOAD_CHILDREN, LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN_ERROR,DELETE_ITEMS } from './constants';
+import { LOAD_CHILDREN, LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN_ERROR, CREATE_FOLDER, DELETE_ITEMS} from './constants';
 
 /**
  * Load the children of specific path, this action starts the request saga
@@ -45,3 +45,15 @@ export function deleteItem(choosePathes) {
     choosePathes,
   };
 }
+export function createNewFolder(path,name){
+  return {
+    type: CREATE_FOLDER,
+    path,
+    name,
+  };
+}
+// export function folderCreated(){
+//   return {
+//     type: CREATE_FOLDER_SUCCESS,
+//   };
+// }

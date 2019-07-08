@@ -1,9 +1,9 @@
 
-ul{
+/* ul{
     position: relative;
     left:20px;
 }
-i{
+.fas{
     height:20px;
     width:20px;
     font-size: 20px;
@@ -18,3 +18,4 @@ i{
     font-family: cursive;
     height: 48px
 }
+

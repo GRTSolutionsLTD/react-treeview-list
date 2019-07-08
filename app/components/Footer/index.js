@@ -17,7 +17,6 @@ function Footer() {
     <div className="wrapperFooter">
       <p className="copyRights">
         <i className="far fa-copyright"></i>
-         all rights reserved
       </p>
     </div>
   );

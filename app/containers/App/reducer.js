@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN, LOAD_CHILDREN_ERROR, DELETE_ITEMS } from './constants';// DELETE_ITEMS
+import { LOAD_CHILDREN_SUCCESS, LOAD_CHILDREN, LOAD_CHILDREN_ERROR ,CREATE_FOLDER, DELETE_ITEMS} from './constants';
 import * as data from '../../data/folders.json';
 
 export const initialState = {
@@ -19,7 +19,29 @@ const appReducer = (state = initialState, action) =>
         draft.loading = true;
         draft.error = false;
         break;
-
+      case CREATE_FOLDER:
+        const pathList = action.path.split('/');
+        let count=0;
+        let folders = data.default;
+        if(action.name!==''&&action.name!==' '){
+          if (action.path !== '') {
+            pathList.forEach(pathName => {
+              count+=1;
+              if (pathName !== ''){
+                folders = folders.find(folde => folde.name === pathName);
+                if(pathList.length!==count)
+                  folders=folders.children;}
+            });
+            folders.children.push({type:"folder",name:action.name,path:`${action.path}/${action.name}`,children:[]});
+          }
+          else {
+            folders.push({type:"folder",name:action.name,path: `/${action.name}`});
+          }}
+        const newState = JSON.parse(JSON.stringify(state.rootFolders));
+        // const newState = state.rootFolders;
+        newState.children = JSON.parse(JSON.stringify(data.default));
+        draft.rootFolders = newState;
+        break;
       case LOAD_CHILDREN_SUCCESS:
         const folder = getFolderByChildPath(state.rootFolders, action.path);
         folder.children = action.children;
@@ -47,10 +69,6 @@ const appReducer = (state = initialState, action) =>
         const newState  = JSON.parse(JSON.stringify(state.rootFolders));
         newState.children = JSON.parse(JSON.stringify(data.default));
         draft.rootFolders = newState;
-        // const deepCloneOfNestedObject = JSON.parse(JSON.stringify(state.rootFolders));
-        // draft.rootFolders = deepCloneOfNestedObject;
-        // eslint-disable-next-line no-console
-        // console.log(deepCloneOfNestedObject);
         break;
       default:
     }
