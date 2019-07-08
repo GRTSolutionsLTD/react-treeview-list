@@ -3,3 +3,8 @@ $color: blue;
 .summary {
     color: $color;
 }
+
+.ReactTable{margin-left: 10%;}
+.ReactTable .rt-thead .rt-resizable-header-content {
+    background-color: lightblue;
+}

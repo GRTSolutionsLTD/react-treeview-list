@@ -14,7 +14,7 @@ import GRTH from '../../images/Capture2.JPG';
 
 function Header() {
   return (
-    <div>
+    <div className="wrapper">
       <img src={GRTH} alt="imageGRTH" />
       <div className="nav-bar">
         <Link className="link" to="/homePage">

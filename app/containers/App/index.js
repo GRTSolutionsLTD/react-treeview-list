@@ -18,12 +18,11 @@ import './app.scss';
 export default function App() {
   return (
     <div className="appWrapper">
-      <Header />
+      <Header /> 
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/folders" component={FoldersPage} />
         <Route exact path="/homePage" component={HomePage} />
-
         <Route exact path="/summary" component={SummaryPage} />
         <Route component={NotFoundPage} />
       </Switch>

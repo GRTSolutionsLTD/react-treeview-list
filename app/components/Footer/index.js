@@ -14,10 +14,9 @@ import './footer.scss';
 
 function Footer() {
   return (
-    <div>
+    <div className="wrapperFooter">
       <p className="copyRights">
-        <i className="far fa-copyright"> all rights reserved</i>
-        
+        <i className="far fa-copyright"></i>
       </p>
     </div>
   );

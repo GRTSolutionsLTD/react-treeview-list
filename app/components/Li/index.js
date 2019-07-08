@@ -1,9 +1,3 @@
-/**
- *
- * Li
- *
- */
-
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 // eslint-disable-next-line import/no-cycle
@@ -13,7 +7,9 @@ import AddFolder from '../AddFolder';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
-function Li({ onLoadChildren, path, name, childrenList, createFolder }) {
+
+function Li({ onLoadChildren, path, name, childrenList, createFolder,chooseDetails }) {
+  const [isChoose,setIsChoose]=useState(false);
   const [isOpen, setIsOpen] = useState(false);
   // const [children,setChildren]=useState(childrenList);
 
@@ -33,7 +29,14 @@ function Li({ onLoadChildren, path, name, childrenList, createFolder }) {
       setIsOpen(false);
     }
   };
-  
+
+  const onChoose = (event, childPath) =>{
+    if(!isChoose)
+      setIsChoose(true);
+    else setIsChoose(false);
+    chooseDetails(childPath);
+  }
+
   return (<>
 
     <li className="li_folders"><div className="folder_wrapper">
