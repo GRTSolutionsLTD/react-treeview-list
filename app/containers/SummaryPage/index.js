@@ -37,7 +37,7 @@ export function SummaryPage() {
   const GetSummary = dataList => {
     for (let i = 0; i < dataList.length; i += 1) {
       if (dataList[i].type === 'folder' && dataList[i].children) GetSummary(dataList[i].children);
-      else {
+      else if(dataList[i].type === 'file') {
         const currentType = dataList[i].path.slice(
           dataList[i].path.lastIndexOf('.') + 1,
         );

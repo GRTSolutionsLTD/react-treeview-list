@@ -51,7 +51,14 @@
       {
         "type": "folder",
         "name": "cat0011.jpg",
-        "path": "/animals/cat/images/cat0011.excell"
+        "path": "/animals/cat/images/cat0011.excell",
+        "children": []
+      },
+      {
+        "type": "folder",
+        "name": "cat00111.jpg",
+        "path": "/animals/cat/images/cat00111.excell",
+        "children": []
       }
     ]
   },

@@ -36,16 +36,17 @@ const appReducer = (state = initialState, action) =>
         if(action.choosePathes.length>=3)
         // eslint-disable-next-line no-alert
         { if (window.confirm(`Are you sure want to delete ${action.choosePathes.length} items ?`)) 
-        { deleteItems(data.default,data.default, action.choosePathes);
+        { deleteItems(data.default,data.default, action.choosePathes,1);
           action.choosePathes.length=0;
         }}
         else{
-          deleteItems(data.default,data.default, action.choosePathes);
+          deleteItems(data.default,data.default, action.choosePathes,1);
           action.choosePathes.length=0
         }
-        // const newState  = JSON.parse(JSON.stringify(state.rootFolders));
-        // newState.children = JSON.parse(JSON.stringify(data.default));
-        // draft.rootFolders = newState;
+    
+        const newState  = JSON.parse(JSON.stringify(state.rootFolders));
+        newState.children = JSON.parse(JSON.stringify(data.default));
+        draft.rootFolders = newState;
         // const deepCloneOfNestedObject = JSON.parse(JSON.stringify(state.rootFolders));
         // draft.rootFolders = deepCloneOfNestedObject;
         // eslint-disable-next-line no-console
@@ -69,21 +70,20 @@ const getFolderByChildPath = (rootFolders, childPath) => {
   return folder;
 };
 
-const deleteItems = (dataList, dat, choosePathes) => {
+const deleteItems = (dataList, dat, choosePathes, num) => {
 
   for (let i = 0; i < dataList.length; i += 1) 
   {
     const curentPath = dataList[i].path;
     if (choosePathes.includes(curentPath))
-      if(dat===data.default)
-        data.default=dataList.filter(item => item.path !== curentPath);
-      else
-      {dat.children=dataList.filter(item => item.path !== curentPath); 
-        dataList=dataList.filter(item => item.path !== curentPath);
-        i-=1;
-      }
+    { if(num===1)
+      data.default=dataList.filter(item => item.path !== curentPath);
+    else
+      dat.children=dataList.filter(item => item.path !== curentPath); 
+    dataList=dataList.filter(item => item.path !== curentPath);       
+    i-=1;}
     else if(dataList[i].children)
-      deleteItems(dataList[i].children, dataList[i],choosePathes);
+      deleteItems(dataList[i].children, dataList[i],choosePathes,num+1);
   }
 };
 

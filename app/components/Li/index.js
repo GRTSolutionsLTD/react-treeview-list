@@ -4,7 +4,7 @@
  *
  */
 
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import propTypes from 'prop-types';
 // eslint-disable-next-line import/no-cycle
 import Folder from '../Folder';
@@ -15,13 +15,13 @@ import './Li.scss';
 function Li({onLoadChildren,path,name,childrenList,chooseDetails}) {
   const [isChoose,setIsChoose]=useState(false);
   const [isOpen,setIsOpen]=useState(false);
-  const [children,setChildren]=useState(childrenList);
+  // const [children,setChildren]=useState(childrenList);
 
-  useEffect(()=>{if(isOpen)
-    setChildren(childrenList);
-  else
-    setChildren([]);
-  },[isOpen]);
+  // useEffect(()=>{if(isOpen)
+  //   setChildren(childrenList);
+  // else
+  //   setChildren([]);
+  // },[isOpen]);
   const onOpen = (event,childPath)=> {
     if (!isOpen) {
       // TODO: to empty by open/close boolean feature
@@ -50,15 +50,17 @@ function Li({onLoadChildren,path,name,childrenList,chooseDetails}) {
       {isOpen?<i className='fas fa-folder-open'></i>:<i className='fas fa-folder'></i>} 
     </div>
     {/* <input type="checkbox" value="" onClick={(e)=>{onOpen(e,path)}}/> */}
-    <Folder  
-      key={path}
-      path={path}
-      name={name}
-      childrenList={children}
-      onLoadChildren={onLoadChildren}
-      chooseDetails={chooseDetails}
+    {isOpen? 
+      <Folder  
+        key={path}
+        path={path}
+        name={name}
+        childrenList={childrenList}
+        onLoadChildren={onLoadChildren}
+        chooseDetails={chooseDetails}
       
-    /></li></>);
+      />:''}</li></>);
+  
 }
 
 Li.propTypes = {
