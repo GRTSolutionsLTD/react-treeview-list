@@ -15,8 +15,8 @@ export function FoldersPage({folders, onLoadChildren,createFolder,deleteItems}) 
         <title>Folders Page</title>
         <meta name="description" content="Description of FoldersPage" />
       </Helmet>
-       <button type="button" className="buttonDelete" onClick={deleteItems}><i className='fas fa-trash-alt'></i></button>
-
+      <button type="button" className="buttonDelete" onClick={deleteItems}><i className='fas fa-trash-alt'></i></button>
+ 
       {/* <ul>
         <i className="fa fa-folder-o" ></i><li  className="list-group-item active">animal</li>
         <ul><li className="list-group-item">dog</li> <ul><li className="list-group-item">images</li></ul> <li className="list-group-item">cat</li></ul>
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => ({folders: state.global.rootFolders})
 
 const mapDispatchToProps = (dispatch) => ({
   onLoadChildren: path => dispatch(loadChildren(path)),
-  deleteItems: () => dispatch(deleteItem(choosePathes))
+  deleteItems: () => dispatch(deleteItem(choosePathes)),
   createFolder: (path,name)=>dispatch(createNewFolder(path,name)),
 });
 

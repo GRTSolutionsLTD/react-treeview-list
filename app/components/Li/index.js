@@ -48,7 +48,7 @@ function Li({ onLoadChildren, path, name, childrenList, createFolder,chooseDetai
         <input type="checkbox" className="custom-control-input" id={path} disable="false"/>
       </div> */}
       <div className="custom-control custom-checkbox mb-3" style={{position : "relative",top:"25%" , left:"25%", display:"inline-block",zIndex:"1"}}>
-        <input type="checkbox" className="custom-control-input" id={path} name={path}/>
+        <input type="checkbox" className="custom-control-input"  id={path} name={path} onClick={(e)=>{onChoose(e,path)}} />
         <label className="custom-control-label" htmlFor={path}> </label>
       </div>
     </div><AddFolder createNewFolder={createFolder} path={path} />
@@ -69,6 +69,7 @@ Li.propTypes = {
   name: propTypes.string,
   childrenList: propTypes.array,
   createFolder: propTypes.func,
+  chooseDetails:propTypes.func,
 };
 
 export default Li;
